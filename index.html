@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Create branded static and dynamic QR campaigns, export print-ready SVG and PNG files, and manage client QR services with Seymore Green." />
+<meta name="theme-color" content="#06160d" />
+<meta name="application-name" content="SG Automation" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="SG Automation" />
+<link rel="icon" type="image/png" href="sg-automation-app-icon-512.png" />
+<link rel="apple-touch-icon" href="sg-automation-app-icon-512.png" />
+<link rel="manifest" href="manifest.webmanifest" />
+<title>SG Automation Platform | QR &amp; Print Builder</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+:root{--green:#00d084;--green2:#0b7a33;--black:#030706;--panel:rgba(255,255,255,.09);--line:rgba(255,255,255,.15);--text:#f8fafc;--muted:#b6c2bd;--danger:#ff5c5c;--gold:#ffd166}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top left,#0b7a33,#06160d 34%,#000 84%);color:var(--text);min-height:100vh;padding:22px}.wrap{max-width:1500px;margin:0 auto}.hero{border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border-radius:28px;padding:28px;box-shadow:0 25px 65px rgba(0,0,0,.38);margin-bottom:22px}.heroBrand{display:flex;align-items:center;gap:20px}.heroIcon{width:108px;height:108px;flex:0 0 108px;border-radius:24px;box-shadow:0 18px 45px rgba(0,0,0,.35)}.pill{display:inline-block;background:rgba(0,208,132,.13);color:#c9ffe7;border:1px solid rgba(0,208,132,.28);padding:9px 14px;border-radius:999px;font-size:14px;margin-bottom:12px}h1{font-size:clamp(34px,5vw,64px);margin:0;letter-spacing:-2px}h2{margin:0 0 14px}p{line-height:1.48}.hero p,.note,.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:430px 1fr;gap:22px}.panel{border:1px solid var(--line);background:var(--panel);border-radius:28px;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.30);backdrop-filter:blur(10px)}.stack{display:grid;gap:22px}label{display:block;margin-bottom:14px;color:#e9f7ef;font-weight:700;font-size:14px}input,select,textarea{width:100%;margin-top:7px;padding:13px 14px;border-radius:16px;border:1px solid var(--line);background:rgba(0,0,0,.42);color:white;outline:none;font-size:15px}textarea{min-height:88px;resize:vertical}input[type=color]{padding:4px;height:50px;cursor:pointer}input[type=range]{padding:0}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.tracking{border:1px solid rgba(0,208,132,.28);background:rgba(0,208,132,.10);border-radius:22px;padding:15px;margin-bottom:16px}.checkline{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;font-weight:800}.checkline input{width:20px;height:20px;margin:0}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}.buttons3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}button{border:none;border-radius:16px;padding:13px 14px;font-weight:900;cursor:pointer;background:var(--green);color:#00190c;font-size:14px;transition:.15s}button:hover{transform:translateY(-1px);opacity:.92}button.secondary{background:#fff;color:#000}button.dark{background:rgba(0,0,0,.52);color:#fff;border:1px solid var(--line)}button.danger{background:var(--danger);color:white}button.gold{background:var(--gold);color:#1d1600}.upload{border:1px dashed rgba(0,208,132,.45);border-radius:20px;padding:18px;text-align:center;background:rgba(0,0,0,.26);cursor:pointer}.previewGrid{display:grid;grid-template-columns:1fr 330px;gap:20px}.previewBox{min-height:560px;background:#f4f4f5;border-radius:26px;display:flex;align-items:center;justify-content:center;padding:28px;overflow:auto}#qrStage{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:18px;box-shadow:0 22px 50px rgba(0,0,0,.28);border-radius:24px;max-width:100%}#qr svg{display:block;width:min(70vw,520px);height:auto}#logoOverlay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:none;align-items:center;justify-content:center;border-radius:16px;padding:10px;pointer-events:none}#logoOverlay img{max-width:100%;max-height:100%;object-fit:contain}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 18px}.stat{background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:18px;padding:14px;text-align:center}.stat b{display:block;font-size:24px;color:var(--green)}.tableWrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:950px;font-size:14px}th{background:rgba(0,0,0,.58);color:#dbe7e1;text-align:left;padding:13px}td{padding:13px;border-top:1px solid var(--line);background:rgba(0,0,0,.18);vertical-align:top}.small{color:var(--muted);font-size:12px;word-break:break-all}.linkText{word-break:break-all;color:#b6ffda;font-size:12px;margin-top:8px}.hidden{display:none}.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}.tab{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:white;cursor:pointer;font-weight:800}.tab.active{background:var(--green);color:#00190c}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(0,208,132,.15);border:1px solid rgba(0,208,132,.26);font-size:12px;color:#c9ffe7}.dangerText{color:#ffb4b4}.okText{color:#b6ffda}@media(max-width:1080px){body{padding:14px}.grid,.previewGrid{grid-template-columns:1fr}.row3,.stats{grid-template-columns:1fr}.buttons3{grid-template-columns:1fr}.heroBrand{align-items:flex-start}.heroIcon{width:82px;height:82px;flex-basis:82px}}@media(max-width:620px){.heroBrand{display:block}.heroIcon{margin-bottom:16px}.hero{padding:20px}}
+</style>
+<style id="mobile-friendly-upgrade">
+html,body{max-width:100%;overflow-x:hidden}
+.wrap,.grid,.stack,.panel,.previewGrid,.previewBox{min-width:0}
+img,svg,canvas{max-width:100%}
+@media(max-width:760px){
+  body{padding:8px;background:radial-gradient(circle at top left,#0b7a33,#06160d 32%,#000 82%)}
+  .wrap{width:100%}
+  .hero,.panel{padding:16px;border-radius:18px}
+  .hero{margin-bottom:12px}
+  .heroBrand{display:block}
+  .heroIcon{width:72px;height:72px;display:block;margin:0 0 14px;border-radius:18px}
+  h1{font-size:clamp(30px,10vw,44px);line-height:1.02;letter-spacing:-1px}
+  h2{font-size:22px}
+  .grid{display:block}
+  .stack{gap:14px;margin-top:14px}
+  .row,.row3,.buttons,.buttons3,.stats,.previewGrid{grid-template-columns:1fr}
+  input,select,textarea{font-size:16px;max-width:100%}
+  button{min-height:48px}
+  .tabs{position:sticky;top:0;z-index:20;display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;margin:0 -4px 14px;padding:8px;background:rgba(3,7,6,.94);border:1px solid var(--line);border-radius:14px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .tab{flex:0 0 auto;white-space:nowrap;scroll-snap-align:start}
+  .previewBox{min-height:0;padding:14px;overflow:hidden;border-radius:18px}
+  #qrStage{width:100%;padding:10px;border-radius:16px}
+  #qr{width:100%;display:flex;justify-content:center}
+  #qr svg{width:100%;max-width:360px;height:auto}
+  .tableWrap{overflow:visible;border:0;border-radius:0}
+  table,thead,tbody,tr,th,td{display:block;width:100%;min-width:0}
+  table{font-size:14px}
+  thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
+  tbody{display:grid;gap:12px}
+  tbody tr{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(0,0,0,.22)}
+  tbody td{display:grid;grid-template-columns:minmax(102px,38%) minmax(0,1fr);gap:10px;padding:11px 12px;border-top:1px solid var(--line);background:transparent;word-break:break-word}
+  tbody td:first-child{border-top:0}
+  tbody td::before{content:attr(data-label);color:var(--muted);font-weight:800;line-height:1.35}
+  tbody td:last-child{grid-template-columns:1fr 1fr}
+  tbody td:last-child::before{grid-column:1/-1}
+  tbody td:last-child button{width:100%}
+  .linkText,.small{word-break:break-word}
+}
+</style>
+</head>
+<body>
+<div class="wrap"><section class="hero"><div class="heroBrand"><img class="heroIcon" src="sg-automation-app-icon-512.png" alt="SG Automation app icon"><div><span class="pill">Top Five SG App • QR • NFC • Print-ready SVG</span><h1>SG Automation Platform</h1><p><strong>Build the code. Print the opportunity.</strong> Create branded QR campaigns, save client records, export print-ready SVG/PNG files, and show customers what one smart scan can do.</p></div></div></section>
+<main class="grid"><section class="panel"><div class="tabs"><button type="button" class="tab active" onclick="showTab('create',this)">Create</button><button type="button" class="tab" onclick="showTab('client',this)">Client</button><button type="button" class="tab" onclick="showTab('api',this)">API Keys</button><button type="button" class="tab" onclick="showTab('rules',this)">Rules</button>
+        <button type="button" class="tab" onclick="showTab('print',this)">Print Builder</button>
+        <button type="button" class="tab" onclick="showTab('pricing',this)">Pricing</button></div>
+<div id="tab-create"><h2>Create Your Code</h2><label>Final Destination URL<input id="destination" placeholder="https://clientsite.com/order" /></label><label>Campaign Name<input id="campaignName" placeholder="Example: Haitian World Cup 2026" /></label><label>Campaign Slug<input id="slug" placeholder="haitian-world-cup-2026" /></label><div class="tracking"><div class="checkline"><span>Use Dynamic Tracking Link</span><input id="useTracking" type="checkbox" checked></div><label>Tracking Domain<input id="trackingDomain" placeholder="https://yourdomain.com/q/" /></label><div id="qrTarget" class="linkText"></div></div><div class="row3"><label>QR Color <input id="fgColor" type="color" value="#0b7a33"></label><label>Background <input id="bgColor" type="color" value="#ffffff"></label><label>Eye Color <input id="eyeColor" type="color" value="#000000"></label></div><label>QR Template Preset<select id="preset" onchange="applyPreset()"><option value="">Custom</option><option value="sg">SG Green / Black</option><option value="restaurant">Restaurant Menu</option><option value="luxury">Luxury Black / Gold</option><option value="event">Event Flyer</option><option value="shirt">T-Shirt Tag</option></select></label><label class="upload">Upload Center Logo<input id="logoInput" class="hidden" type="file" accept="image/*"></label><button class="dark" type="button" onclick="removeLogo()">Remove Logo</button><div class="row"><label>QR Size: <span id="sizeVal">1024</span>px<input id="qrSize" type="range" min="512" max="2048" step="128" value="1024"></label><label>Logo Size: <span id="logoVal">22</span>%<input id="logoSize" type="range" min="10" max="32" step="1" value="22"></label></div><div class="row"><label>Quiet Zone: <span id="marginVal">2</span><input id="margin" type="range" min="0" max="8" step="1" value="2"></label><label>Error Correction<select id="errorLevel"><option value="L">L</option><option value="M">M</option><option value="Q">Q</option><option value="H" selected>H - Best for logos</option></select></label></div><div class="checkline" style="background:rgba(0,0,0,.25);padding:14px;border-radius:18px;border:1px solid var(--line)"><span>Logo plate behind logo</span><input id="logoPlate" type="checkbox" checked></div></div>
+<div id="tab-client" class="hidden"><h2>Client Record</h2><div class="row"><label>Client Name <input id="clientName" placeholder="Business or client name"></label><label>Contact Person <input id="contactPerson" placeholder="Main contact"></label></div><div class="row"><label>Email <input id="clientEmail" placeholder="client@email.com"></label><label>Phone <input id="clientPhone" placeholder="617-000-0000"></label></div><label>Address <input id="clientAddress" placeholder="Street, City, State, ZIP"></label><div class="row"><label>Campaign Type<select id="campaignType"><option>T-Shirt</option><option>Restaurant Menu</option><option>Business Card</option><option>Flyer</option><option>Event</option><option>NFC Card</option><option>Window Sign</option><option>Wholesale Rendering App</option></select></label><label>Billing Plan<select id="billingPlan"><option>Internal</option><option>One-Time Setup</option><option>$19/mo Starter</option><option>$49/mo Business</option><option>$99/mo Pro</option></select></label></div><label>Notes <textarea id="notes" placeholder="Client goals, print job, QR purpose, follow-up tasks"></textarea></label></div>
+<div id="tab-api" class="hidden"><h2>API / Infrastructure</h2><p class="note">The Google Sheet connection is preloaded. Private service keys should stay server-side, never inside public HTML.</p><label>Supabase URL <input id="supabaseUrl" placeholder="https://xxxx.supabase.co"></label><label>Supabase Public Key <input id="supabaseKey" placeholder="public anon key"></label><label>Netlify Function Endpoint <input id="netlifyEndpoint" placeholder="https://site.netlify.app/.netlify/functions/track"></label><label>Google Apps Script Web App URL <input id="gasEndpoint" value="https://script.google.com/macros/s/AKfycbwXBpSCa-mT96JEUr3pW1kvBWzGRXjvhXmqM1ZdMPQZ9AohWFH8w-7MXAB1VQTqrWdUTw/exec" placeholder="https://script.google.com/.../exec"></label><label>Wholesale Rendering App URL <input id="renderingAppUrl" placeholder="https://your-rendering-app.netlify.app"></label><button type="button" onclick="saveSettings()">Save API Settings</button><p id="sheetStatus" class="note">Google Sheet endpoint loaded.</p></div>
+<div id="tab-rules" class="hidden"><h2>Dynamic Rules</h2><div class="row"><label>Start Date <input id="startDate" type="date"></label><label>Expiration Date <input id="expireDate" type="date"></label></div><label>Password Protect Campaign <input id="campaignPassword" placeholder="Optional password"></label><label>Scheduled Redirect URL <input id="scheduledUrl" placeholder="Use after expiration or special date"></label><label>NFC Profile Type<select id="nfcType"><option>Payment Link</option><option>Digital Business Card</option><option>Product Reorder</option><option>Menu</option><option>Event Ticket</option><option>Wholesale Quote</option></select></label><label>NFC Button Label <input id="nfcLabel" placeholder="Tap to order / Tap to pay / Tap to connect"></label></div>
+
+<div id="tab-print" class="hidden"><h2>Print Builder</h2>
+<label>Print Product<select id="printProduct" onchange="setDefaultCost();updatePrintPreview();calculateQuote()">
+<option>Business Card</option><option>Postcard 4x6</option><option>Flyer 8.5x11</option><option>Table Tent</option><option>Countertop Sign</option><option>Window Cling</option><option>UV Sticker</option><option>Regular Sticker</option><option>NFC Card</option><option>T-Shirt Tag</option>
+</select></label>
+<div class="row3">
+<label>Quantity<input id="printQty" type="number" value="100" min="1" oninput="calculateQuote()"></label>
+<label>Unit Cost ($)<input id="unitCost" type="number" value="0.08" step="0.01" oninput="calculateQuote()"></label>
+<label>Markup %<input id="markupPct" type="number" value="40" min="0" oninput="calculateQuote()"></label>
+</div>
+<div class="row">
+<label>Setup Fee ($)<input id="setupFee" type="number" value="50" step="1" oninput="calculateQuote()"></label>
+<label>Design Fee ($)<input id="designFee" type="number" value="75" step="1" oninput="calculateQuote()"></label>
+</div>
+<label>QR Service Type<select id="qrServiceType" onchange="calculateQuote()">
+<option>Basic Static QR</option><option>Dynamic QR + Tracking</option><option>Dynamic QR + Monthly Management</option><option>Full Automation Package</option>
+</select></label>
+<label>Monthly Management ($)<input id="monthlyFee" type="number" value="19" step="1" oninput="calculateQuote()"></label>
+<div style="background:rgba(0,208,132,.10);border:1px solid rgba(0,208,132,.28);border-radius:20px;padding:16px;margin-top:10px">
+<div class="row3">
+<div class="stat"><b id="printTotal">$0.00</b>Print Total</div>
+<div class="stat"><b id="setupTotal">$0.00</b>Setup + Design</div>
+<div class="stat"><b id="invoiceTotal">$0.00</b>Invoice Total</div>
+</div>
+<div style="text-align:center;margin-top:10px"><b id="monthlyTotal" style="color:var(--gold);font-size:20px">$0.00</b><div class="small">Monthly recurring</div></div>
+</div>
+<div id="printPreviewArea" style="background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px;min-height:60px;font-size:13px;color:var(--muted)">Print preview will appear here.</div>
+</div>
+
+<div id="tab-pricing" class="hidden"><h2>Pricing Bundles</h2>
+<p class="note">Pick a bundle to auto-fill the Print Builder, or build your own quote manually on the Print tab.</p>
+<label>Suggested Bundle<select id="suggestedBundle" onchange="applyBundle()">
+<option value="">— Select a bundle —</option>
+<option value="starter">🟢 Starter — Business Cards + QR ($19/mo)</option>
+<option value="restaurant">🍽️ Restaurant — Table Tents + Monthly ($49/mo)</option>
+<option value="retail">🛒 Retail — UV Stickers + Management ($49/mo)</option>
+<option value="enterprise">⚡ Enterprise — Full Setup ($199/mo)</option>
+</select></label>
+<div style="display:grid;gap:12px;margin-top:14px">
+<div class="tracking"><div class="checkline"><span>🟢 Starter Bundle</span><span class="badge">$19/mo</span></div><p class="small">100 Business Cards · QR + Tracking · $50 setup · $75 design</p></div>
+<div class="tracking"><div class="checkline"><span>🍽️ Restaurant Bundle</span><span class="badge">$49/mo</span></div><p class="small">25 Table Tents · Dynamic QR · $150 setup · $150 design</p></div>
+<div class="tracking"><div class="checkline"><span>🛒 Retail Bundle</span><span class="badge">$49/mo</span></div><p class="small">250 UV Stickers · QR Management · $100 setup · $125 design</p></div>
+<div class="tracking"><div class="checkline"><span>⚡ Enterprise Bundle</span><span class="badge">$199/mo</span></div><p class="small">10 Countertop Signs · Full Automation · $500 setup · $500 design</p></div>
+</div>
+<div style="margin-top:14px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:18px;padding:16px">
+<h2 style="margin-bottom:8px">Current Quote Summary</h2>
+<div class="row3">
+<div class="stat"><b id="printTotal2">—</b>Print</div>
+<div class="stat"><b id="setupTotal2">—</b>Setup</div>
+<div class="stat"><b id="invoiceTotal2">—</b>Total</div>
+</div>
+</div>
+</div>
+<div class="buttons3" style="margin-top:16px"><button type="button" onclick="saveCampaign()">Save Campaign</button><button class="secondary" type="button" onclick="downloadPNG()">PNG</button><button class="secondary" type="button" onclick="downloadSVG()">SVG</button></div><div class="buttons3" style="margin-top:10px"><button class="dark" type="button" onclick="copyTracking()">Copy Link</button><button class="gold" type="button" onclick="exportCSV()">Export CSV</button><button class="danger" type="button" onclick="clearAll()">Clear All</button></div></section>
+<section class="stack"><div class="panel"><h2>Live QR Preview</h2><div class="previewGrid"><div class="previewBox"><div id="qrStage"><div id="qr"></div><div id="logoOverlay"><img id="logoImg" alt="Center logo"></div></div></div><aside class="note"><p><strong>Production rule:</strong> keep contrast strong. Pretty is good; scannable pays the bills.</p><p><strong>Dynamic rule:</strong> printed QR should point to your tracking URL first, then redirect to the final destination.</p><p><strong>Infrastructure rule:</strong> real scan tracking needs a backend. This file is ready to connect to Supabase, Netlify Functions, Google Sheets, or your own API.</p><button type="button" onclick="simulateScan()">Simulate Scan</button></aside></div></div><div class="panel"><h2>SG Scanboard</h2><div class="stats"><div class="stat"><b id="totalScans">0</b>Total Scans</div><div class="stat"><b id="campaignCount">0</b>Campaigns</div><div class="stat"><b id="clientCount">0</b>Clients</div><div class="stat"><b id="topCampaign">-</b>Top Campaign</div></div><div class="tableWrap"><table><thead><tr><th>Client / Campaign</th><th>Type</th><th>Tracking Link</th><th>Destination</th><th>Scans</th><th>City</th><th>Device</th><th>Status</th><th>Actions</th></tr></thead><tbody id="campaignRows"></tbody></table></div></div></section></main></div>
+<script>
+const STORE_KEY="sgAutomationCampaignsV1", SETTINGS_KEY="sgAutomationSettingsV1";
+const DEFAULT_GAS_ENDPOINT="https://script.google.com/macros/s/AKfycbwXBpSCa-mT96JEUr3pW1kvBWzGRXjvhXmqM1ZdMPQZ9AohWFH8w-7MXAB1VQTqrWdUTw/exec";
+const LEGACY_GAS_ENDPOINT="https://script.google.com/macros/s/AKfycbzRQMd-1kBFC9mJCFZXOnBwmpMvBkyUYHVIXg0YxmNnghe6oon_Btf5sESxyyDK6IyBUQ/exec";
+const state={logoData:null,editIndex:null,campaigns:JSON.parse(localStorage.getItem(STORE_KEY)||"[]")};const $=id=>document.getElementById(id);
+function val(id, fallback=""){ const el=$(id); return el ? el.value : fallback; }
+function checked(id, fallback=false){ const el=$(id); return el ? !!el.checked : fallback; }
+function setVal(id, value){ const el=$(id); if(el) el.value = value ?? ""; }
+function setChecked(id, value){ const el=$(id); if(el) el.checked = !!value; }
+function newCampaignId(){
+  const stamp=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York",year:"2-digit",month:"2-digit",day:"2-digit"}).format(new Date()).replace(/-/g,"");
+  const code=Math.random().toString(36).slice(2,6).toUpperCase();
+  return `SGQR-${stamp}-${code}`;
+}
+function showTab(name,btn){
+  ["create","client","api","rules","print","pricing"].forEach(t=>{
+    const panel=$("tab-"+t);
+    if(panel) panel.classList.add("hidden");
+  });
+  const activePanel=$("tab-"+name);
+  if(activePanel) activePanel.classList.remove("hidden");
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  if(btn) btn.classList.add("active");
+}
+function saveSettings(){
+  const settings={
+    supabaseUrl:val("supabaseUrl"),
+    supabaseKey:val("supabaseKey"),
+    netlifyEndpoint:val("netlifyEndpoint"),
+    gasEndpoint:val("gasEndpoint"),
+    renderingAppUrl:val("renderingAppUrl"),
+    trackingDomain:val("trackingDomain","https://sgqr.netlify.app/q/")
+  };
+  localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));
+  alert("API settings saved in this browser.");
+}
+function productDefaultCost(product){
+  return {"Business Card":0.08,"Postcard 4x6":0.18,"Flyer 8.5x11":0.35,"Table Tent":1.25,"Countertop Sign":4.00,"Window Cling":3.50,"UV Sticker":0.55,"Regular Sticker":0.25,"NFC Card":1.75,"T-Shirt Tag":0.30}[product] || 0.25;
+}
+function setDefaultCost(){
+  if($("unitCost")) $("unitCost").value=productDefaultCost($("printProduct").value).toFixed(2);
+}
+function calculateQuote(){
+  if(!$("printQty")) return;
+  const qty=Number($("printQty").value||0), unit=Number($("unitCost").value||0), markup=Number($("markupPct").value||0)/100;
+  const setup=Number($("setupFee").value||0), design=Number($("designFee").value||0), monthly=Number($("monthlyFee").value||0);
+  const printTotal=qty*unit*(1+markup), setupTotal=setup+design, invoice=printTotal+setupTotal;
+  $("printTotal").textContent="$"+printTotal.toFixed(2);
+  $("setupTotal").textContent="$"+setupTotal.toFixed(2);
+  $("invoiceTotal").textContent="$"+invoice.toFixed(2);
+  $("monthlyTotal").textContent="$"+monthly.toFixed(2);
+  if($("printTotal2")) $("printTotal2").textContent="$"+printTotal.toFixed(2);
+  if($("setupTotal2")) $("setupTotal2").textContent="$"+setupTotal.toFixed(2);
+  if($("invoiceTotal2")) $("invoiceTotal2").textContent="$"+invoice.toFixed(2);
+}
+function applyBundle(){
+  const b=$("suggestedBundle").value;
+  if(b==="starter"){ $("printProduct").value="Business Card"; $("printQty").value=100; $("setupFee").value=50; $("designFee").value=75; $("monthlyFee").value=19; $("qrServiceType").value="Dynamic QR + Tracking"; }
+  if(b==="restaurant"){ $("printProduct").value="Table Tent"; $("printQty").value=25; $("setupFee").value=150; $("designFee").value=150; $("monthlyFee").value=49; $("qrServiceType").value="Dynamic QR + Monthly Management"; }
+  if(b==="retail"){ $("printProduct").value="UV Sticker"; $("printQty").value=250; $("setupFee").value=100; $("designFee").value=125; $("monthlyFee").value=49; $("qrServiceType").value="Dynamic QR + Monthly Management"; }
+  if(b==="enterprise"){ $("printProduct").value="Countertop Sign"; $("printQty").value=10; $("setupFee").value=500; $("designFee").value=500; $("monthlyFee").value=199; $("qrServiceType").value="Full Automation Package"; }
+  setDefaultCost(); updatePrintPreview(); calculateQuote();
+}
+
+function cleanSlug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+function safeName(){return cleanSlug(val("campaignName")||"qr-code")}
+function getQRTarget(){
+  const dest=val("destination").trim();
+  const slug=val("slug").trim();
+  const domain=val("trackingDomain").trim();
+  const useTrack=checked("useTracking");
+  const gas=val("gasEndpoint",DEFAULT_GAS_ENDPOINT).trim()||DEFAULT_GAS_ENDPOINT;
+  if(useTrack&&gas&&slug) return gas+"?action=track&slug="+encodeURIComponent(slug);
+  if(useTrack&&domain&&slug) return domain.replace(/\/$/,"")+"/"+slug;
+  return dest||"https://seymoregreen.com";
+}
+function drawQR(){
+  const target=getQRTarget();
+  const fg=val("fgColor","#0b7a33");
+  const bg=val("bgColor","#ffffff");
+  const eye=val("eyeColor","#000000");
+  const size=Number(val("qrSize","1024"));
+  const marginCells=Number(val("margin","2"));
+  const errLevel=val("errorLevel","H");
+  try{
+    const qr=qrcode(0,errLevel);
+    qr.addData(target);
+    qr.make();
+    const count=qr.getModuleCount();
+    const cell=Math.floor(size/count);
+    const pad=(size-(cell*count))/2;
+    let svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">`;
+    svg+=`<rect width="${size}" height="${size}" fill="${bg}"/>`;
+    // eye positions (top-left, top-right, bottom-left finder patterns)
+    const eyes=[];
+    const ep=7;
+    [[0,0],[count-ep,0],[0,count-ep]].forEach(([er,ec])=>{
+      for(let r=er;r<er+ep;r++) for(let c=ec;c<ec+ep;c++) eyes.push(r+","+c);
+    });
+    for(let r=0;r<count;r++){
+      for(let c=0;c<count;c++){
+        if(!qr.isDark(r,c)) continue;
+        const isEye=eyes.includes(r+","+c);
+        const color=isEye?eye:fg;
+        const x=pad+c*cell;
+        const y=pad+r*cell;
+        svg+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${cell}" height="${cell}" fill="${color}"/>`;
+      }
+    }
+    svg+=`</svg>`;
+    $("qr").innerHTML=svg;
+    // logo overlay
+    const overlay=$("logoOverlay");
+    const logoImg=$("logoImg");
+    if(state.logoData){
+      const logoSize=size*(Number(val("logoSize","22"))/100);
+      overlay.style.display="flex";
+      overlay.style.width=logoSize+"px";
+      overlay.style.height=logoSize+"px";
+      overlay.style.background=$("logoPlate").checked?bg:"transparent";
+      logoImg.src=state.logoData;
+    } else {
+      overlay.style.display="none";
+    }
+    // update tracking display
+    const display=$("qrTarget");
+    if(display) display.textContent="QR points to: "+target;
+  } catch(e){
+    $("qr").innerHTML=`<div style="color:#ff5c5c;padding:20px;text-align:center">QR Error: ${e.message}</div>`;
+  }
+}
+function loadSettings(){
+  try{
+    const s=JSON.parse(localStorage.getItem(SETTINGS_KEY)||"{}");
+    setVal("supabaseUrl",s.supabaseUrl);
+    setVal("supabaseKey",s.supabaseKey);
+    setVal("netlifyEndpoint",s.netlifyEndpoint);
+    const savedGas=(s.gasEndpoint||"").trim();
+    setVal("gasEndpoint",!savedGas||savedGas===LEGACY_GAS_ENDPOINT?DEFAULT_GAS_ENDPOINT:savedGas);
+    setVal("renderingAppUrl",s.renderingAppUrl);
+    setVal("trackingDomain",s.trackingDomain||"https://sgqr.netlify.app/q/");
+  } catch(e){}
+}
+function renderRows(){
+  const tbody=$("campaignRows");
+  tbody.innerHTML="";
+  state.campaigns.forEach((c,i)=>{
+    const tr=document.createElement("tr");
+    const status=c.expireDate&&new Date(c.expireDate)<new Date()?"<span class='dangerText'>Expired</span>":"<span class='okText'>Active</span>";
+    tr.innerHTML=`<td data-label="Campaign"><strong>${c.campaignName||"—"}</strong><div class="small">${c.campaignId||""}</div><div class="small">${c.clientName||""}</div></td>
+    <td data-label="Type"><span class="badge">${c.campaignType||"QR"}</span></td>
+    <td data-label="Tracking" class="linkText">${c.trackingLink||"—"}</td>
+    <td data-label="Destination" class="small">${c.destination||"—"}</td>
+    <td data-label="Scans">${c.scans||0}</td>
+    <td data-label="City">${c.city||"—"}</td>
+    <td data-label="Device">${c.device||"—"}</td>
+    <td data-label="Status">${status}</td>
+    <td data-label="Actions"><button type="button" onclick="editCampaign(${i})">Edit</button> <button class="danger" type="button" onclick="deleteCampaign(${i})">Del</button></td>`;
+    tbody.appendChild(tr);
+  });
+  $("campaignCount").textContent=state.campaigns.length;
+  $("clientCount").textContent=[...new Set(state.campaigns.map(c=>c.clientName).filter(Boolean))].length;
+  $("totalScans").textContent=state.campaigns.reduce((a,c)=>a+(c.scans||0),0);
+  const top=state.campaigns.slice().sort((a,b)=>(b.scans||0)-(a.scans||0))[0];
+  $("topCampaign").textContent=top?top.campaignName.slice(0,12):"—";
+}
+async function sendToGoogleSheets(campaign){
+  const endpoint=val("gasEndpoint",DEFAULT_GAS_ENDPOINT).trim()||DEFAULT_GAS_ENDPOINT;
+  if(!endpoint) return false;
+  const payload=new URLSearchParams({
+    action:"save",
+    timestamp:campaign.savedAt||new Date().toISOString(),
+    campaignId:campaign.campaignId||"",
+    clientName:campaign.clientName||"",
+    campaignName:campaign.campaignName||"",
+    slug:campaign.slug||"",
+    destination:campaign.destination||"",
+    trackingLink:campaign.trackingLink||"",
+    scanCount:String(campaign.scans||0),
+    city:campaign.city||"",
+    device:campaign.device||"",
+    notes:campaign.notes||"",
+    campaignType:campaign.campaignType||"",
+    staticOrDynamic:campaign.useTracking?"Dynamic":"Static",
+    customerEmail:campaign.clientEmail||"",
+    customerPhone:campaign.clientPhone||""
+  });
+  try{
+    await fetch(endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},body:payload.toString()});
+    if($("sheetStatus")) $("sheetStatus").textContent="Campaign sent to Google Sheets.";
+    return true;
+  }catch(err){
+    console.error("Google Sheet sync failed:",err);
+    if($("sheetStatus")) $("sheetStatus").textContent="Saved on this device; Google Sheet sync needs attention.";
+    return false;
+  }
+}
+async function saveCampaign(){
+  const previous=state.editIndex!==null?state.campaigns[state.editIndex]:null;
+  const campaign={
+    campaignId:previous&&previous.campaignId?previous.campaignId:newCampaignId(),
+    campaignName:val("campaignName"),destination:val("destination"),
+    slug:val("slug"),trackingDomain:val("trackingDomain"),
+    trackingLink:getQRTarget(),useTracking:checked("useTracking"),
+    clientName:val("clientName"),contactPerson:val("contactPerson"),
+    clientEmail:val("clientEmail"),clientPhone:val("clientPhone"),
+    clientAddress:val("clientAddress"),campaignType:val("campaignType"),
+    billingPlan:val("billingPlan"),notes:val("notes"),
+    startDate:val("startDate"),expireDate:val("expireDate"),
+    campaignPassword:val("campaignPassword"),nfcType:val("nfcType"),
+    nfcLabel:val("nfcLabel"),scans:0,city:"—",device:"—",
+    savedAt:new Date().toISOString()
+  };
+  if(state.editIndex!==null){
+    campaign.scans=state.campaigns[state.editIndex].scans||0;
+    state.campaigns[state.editIndex]=campaign;
+    state.editIndex=null;
+  } else {
+    state.campaigns.push(campaign);
+  }
+  localStorage.setItem(STORE_KEY,JSON.stringify(state.campaigns));
+  renderRows();
+  const sheetSaved=await sendToGoogleSheets(campaign);
+  alert(sheetSaved?"Campaign saved and sent to Google Sheets.":"Campaign saved on this device. Google Sheet sync needs attention.");
+}
+function editCampaign(i){
+  const c=state.campaigns[i]; state.editIndex=i;
+  setVal("campaignName",c.campaignName);setVal("destination",c.destination);
+  setVal("slug",c.slug);setVal("trackingDomain",c.trackingDomain);
+  setChecked("useTracking",c.useTracking);setVal("clientName",c.clientName);
+  setVal("contactPerson",c.contactPerson);setVal("clientEmail",c.clientEmail);
+  setVal("clientPhone",c.clientPhone);setVal("clientAddress",c.clientAddress);
+  setVal("campaignType",c.campaignType);setVal("billingPlan",c.billingPlan);
+  setVal("notes",c.notes);setVal("startDate",c.startDate);
+  setVal("expireDate",c.expireDate);setVal("nfcType",c.nfcType);
+  setVal("nfcLabel",c.nfcLabel);
+  showTab("create",document.querySelector(".tab"));drawQR();
+}
+function deleteCampaign(i){
+  if(!confirm("Delete this campaign?")) return;
+  state.campaigns.splice(i,1);
+  localStorage.setItem(STORE_KEY,JSON.stringify(state.campaigns));
+  renderRows();
+}
+function copyTracking(){
+  const link=getQRTarget();
+  navigator.clipboard.writeText(link).then(()=>alert("Copied: "+link)).catch(()=>prompt("Copy this link:",link));
+}
+function exportCSV(){
+  if(!state.campaigns.length){alert("No campaigns to export.");return;}
+  const keys=["campaignId","campaignName","clientName","destination","trackingLink","billingPlan","scans","savedAt"];
+  const rows=[keys.join(","),...state.campaigns.map(c=>keys.map(k=>`"${(c[k]||"").toString().replace(/"/g,'""')}"`).join(","))];
+  const blob=new Blob([rows.join("\n")],{type:"text/csv"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="sg-campaigns.csv";a.click();
+}
+function clearAll(){
+  if(!confirm("Clear ALL campaigns and reset? This cannot be undone.")) return;
+  state.campaigns=[];localStorage.removeItem(STORE_KEY);renderRows();drawQR();
+}
+function simulateScan(){
+  if(!state.campaigns.length){alert("Save a campaign first to simulate a scan.");return;}
+  const c=state.campaigns[state.campaigns.length-1];
+  c.scans=(c.scans||0)+1;c.city="Boston, MA";c.device="Mobile";
+  localStorage.setItem(STORE_KEY,JSON.stringify(state.campaigns));
+  renderRows();alert("Scan simulated on: "+c.campaignName);
+}
+function updatePrintPreview(){
+  const area=$("printPreviewArea");
+  if(!area) return;
+  const product=val("printProduct","Business Card");
+  const qty=val("printQty","100");
+  area.innerHTML=`<strong style="color:var(--green)">${product}</strong> × ${qty} units — ready to quote`;
+}
+function applyPreset(){
+  const p=val("preset","");
+  if(p==="sg"){setVal("fgColor","#0b7a33");setVal("bgColor","#ffffff");setVal("eyeColor","#000000");}
+  if(p==="restaurant"){setVal("fgColor","#8b0000");setVal("bgColor","#fff8f0");setVal("eyeColor","#4a0000");}
+  if(p==="luxury"){setVal("fgColor","#ffd166");setVal("bgColor","#1a1a1a");setVal("eyeColor","#ffd166");}
+  if(p==="event"){setVal("fgColor","#2d00f7");setVal("bgColor","#ffffff");setVal("eyeColor","#ff0054");}
+  if(p==="shirt"){setVal("fgColor","#ffffff");setVal("bgColor","#000000");setVal("eyeColor","#ffffff");}
+  drawQR();
+}
+function removeLogo(){state.logoData=null;$("logoInput").value="";drawQR()}function makeDownloadSVG(includeLogo=true){const svg=$("qr").querySelector("svg").cloneNode(true);svg.setAttribute("xmlns","http://www.w3.org/2000/svg");if(includeLogo&&state.logoData){const size=Number($("qrSize").value),logoSize=size*(Number($("logoSize").value)/100),x=(size-logoSize)/2,y=(size-logoSize)/2,bg=$("bgColor").value;if($("logoPlate").checked){const rect=document.createElementNS("http://www.w3.org/2000/svg","rect");rect.setAttribute("x",x);rect.setAttribute("y",y);rect.setAttribute("width",logoSize);rect.setAttribute("height",logoSize);rect.setAttribute("rx",logoSize*.10);rect.setAttribute("fill",bg);svg.appendChild(rect)}const image=document.createElementNS("http://www.w3.org/2000/svg","image");image.setAttribute("href",state.logoData);image.setAttribute("x",x+logoSize*.12);image.setAttribute("y",y+logoSize*.12);image.setAttribute("width",logoSize*.76);image.setAttribute("height",logoSize*.76);image.setAttribute("preserveAspectRatio","xMidYMid meet");svg.appendChild(image)}return new XMLSerializer().serializeToString(svg)}
+function downloadSVG(){const blob=new Blob([makeDownloadSVG(true)],{type:"image/svg+xml;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=safeName()+".svg";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}function downloadPNG(){const size=Number($("qrSize").value),svgBlob=new Blob([makeDownloadSVG(true)],{type:"image/svg+xml;charset=utf-8"}),url=URL.createObjectURL(svgBlob),img=new Image();img.onload=function(){const canvas=document.createElement("canvas");canvas.width=size;canvas.height=size;const ctx=canvas.getContext("2d");ctx.fillStyle=$("bgColor").value;ctx.fillRect(0,0,size,size);ctx.drawImage(img,0,0,size,size);URL.revokeObjectURL(url);canvas.toBlob(function(blob){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=safeName()+".png";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)},"image/png")};img.src=url}
+$("campaignName").addEventListener("input",function(){if(state.editIndex===null)$("slug").value=cleanSlug(this.value);drawQR()});["destination","slug","trackingDomain","gasEndpoint","useTracking","fgColor","bgColor","eyeColor","qrSize","logoSize","margin","errorLevel","logoPlate"].forEach(id=>{$(id).addEventListener("input",drawQR);$(id).addEventListener("change",drawQR)});$("logoInput").addEventListener("change",e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{state.logoData=reader.result;drawQR()};reader.readAsDataURL(file)});loadSettings();drawQR();updatePrintPreview();calculateQuote();renderRows();
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(err=>console.warn("Service worker registration failed:",err)));}
+</script>
+</body>
+</html>
