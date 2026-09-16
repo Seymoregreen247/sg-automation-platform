@@ -1,0 +1,24 @@
+{
+  "name": "SG Automation Platform",
+  "short_name": "SG Automation",
+  "description": "Create branded QR campaigns and export print-ready SVG and PNG files.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#030706",
+  "theme_color": "#06160d",
+  "icons": [
+    {
+      "src": "sg-automation-app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "sg-automation-app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
