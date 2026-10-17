@@ -1,24 +1,24 @@
 {
-  "name": "SG Automation Platform",
-  "short_name": "SG Automation",
-  "description": "Create branded QR campaigns and export print-ready SVG and PNG files.",
-  "start_url": "./",
+  "id": "./",
+  "name": "Dynamic Q",
+  "short_name": "Dynamic Q",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#030706",
+  "background_color": "#06160d",
   "theme_color": "#06160d",
   "icons": [
     {
-      "src": "sg-automation-app-icon-512.png",
-      "sizes": "512x512",
+      "src": "icons/dynamic-q-192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
-      "src": "sg-automation-app-icon-512.png",
+      "src": "icons/dynamic-q-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ]
 }
